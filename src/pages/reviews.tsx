@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { Star, ArrowLeft, MessageCircle, Copy } from "lucide-react";
 import { FaWhatsapp, FaGoogle } from "react-icons/fa";
 
-import logoPath from "@assets/1a8da157-dd3c-4aca-a944-a5f28e3399b3_1781030729801.png";
 import {
   generateCustomerReview,
   LOCAL_BUSINESS_SCHEMA,
