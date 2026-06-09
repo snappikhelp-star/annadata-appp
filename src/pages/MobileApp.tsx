@@ -8,6 +8,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import { FaWhatsapp, FaGoogle, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import logoPath from "@assets/f0d776c4-6a98-4584-9d3a-7186ca49bf22_1781029871797.png";
 import bannerPath from "@assets/gfjhj_1780987573210.jpg";
 import shopImg1 from "@assets/WhatsApp_Image_2026-06-04_at_1.14.14_PM_(1)_1780559137512.jpeg";
 import shopImg2 from "@assets/WhatsApp_Image_2026-06-04_at_1.14.14_PM_1780559137513.jpeg";

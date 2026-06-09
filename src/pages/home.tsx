@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaInstagram, FaYoutube, FaFacebook, FaGoogle } from "react-icons/fa";
 
+import logoPath from "@assets/f0d776c4-6a98-4584-9d3a-7186ca49bf22_1781029871797.png";
 import ownerPhotoPath from "@assets/2d15bd6ce2f040b69e7c52160dd6bba7FR_1779471098722.jpg";
 import heroImagePath from "@assets/gfjhj_1780654864294.jpg";
 import bannerWidePath from "@assets/a5fd3043-fdbf-4d76-adf5-6f0016548e78_1779476882694.png";
