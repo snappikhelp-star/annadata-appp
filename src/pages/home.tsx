@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaInstagram, FaYoutube, FaFacebook, FaGoogle } from "react-icons/fa";
 
-import logoPath from "@assets/f0d776c4-6a98-4584-9d3a-7186ca49bf22_1781029871797.png";
 import ownerPhotoPath from "@assets/2d15bd6ce2f040b69e7c52160dd6bba7FR_1779471098722.jpg";
 import heroImagePath from "@assets/gfjhj_1780654864294.jpg";
 import bannerWidePath from "@assets/a5fd3043-fdbf-4d76-adf5-6f0016548e78_1779476882694.png";
@@ -191,7 +190,7 @@ function Navbar() {
       <header className={`fixed top-[46px] left-0 w-full z-50 transition-all duration-300 ${scrolled ? "py-2 glass-dark shadow-lg" : "py-3 bg-transparent"}`}>
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
-            <img src={logoPath} alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-full border-2 border-secondary/60 shadow-lg bg-white" />
+           <div className="text-4xl">🌾</div> alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-full border-2 border-secondary/60 shadow-lg bg-white" />
             <div className="flex flex-col">
               <span className="font-serif font-bold text-sm md:text-lg text-secondary tracking-wide leading-tight drop-shadow-sm">ANNADATA AGRI AND SEEDS</span>
               <span className="font-hindi text-[10px] md:text-xs text-secondary font-semibold">Salamatpur, Raisen</span>
