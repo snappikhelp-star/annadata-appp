@@ -190,7 +190,9 @@ function Navbar() {
       <header className={`fixed top-[46px] left-0 w-full z-50 transition-all duration-300 ${scrolled ? "py-2 glass-dark shadow-lg" : "py-3 bg-transparent"}`}>
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
-           <div className="text-4xl">🌾</div> alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-full border-2 border-secondary/60 shadow-lg bg-white" />
+<div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-secondary flex items-center justify-center bg-white text-2xl">
+  🌾
+</div>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-sm md:text-lg text-secondary tracking-wide leading-tight drop-shadow-sm">ANNADATA AGRI AND SEEDS</span>
               <span className="font-hindi text-[10px] md:text-xs text-secondary font-semibold">Salamatpur, Raisen</span>
