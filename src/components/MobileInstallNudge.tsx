@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download, Share2, Plus, LayoutGrid, ChevronRight } from "lucide-react";
 import { usePWAInstall } from "@/hooks/usePWAInstall";
-import logoPath from "@assets/f0d776c4-6a98-4584-9d3a-7186ca49bf22_1781029871797.png";
 
 const STORAGE_KEY = "annadata_install_nudge_dismissed";
 
@@ -22,8 +21,9 @@ function IOSStepsSheet({ onClose }: { onClose: () => void }) {
         onClick={e => e.stopPropagation()}>
         <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5" />
         <div className="flex items-center gap-3 mb-5">
-          <img src={logoPath} alt="App" className="w-12 h-12 rounded-2xl shadow-sm" />
-          <div>
+          <div className="w-12 h-12 rounded-2xl bg-green-700 text-white flex items-center justify-center text-2xl">
+  🌾
+</div>
             <div className="font-bold text-gray-900 text-base">App Install करें</div>
             <div className="text-gray-500 text-xs">Annadata Agri & Seeds</div>
           </div>
