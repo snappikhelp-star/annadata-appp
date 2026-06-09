@@ -338,7 +338,7 @@ function HomeTab({ onTabChange }: { onTabChange: (t: Tab) => void }) {
           <div className="text-white/50 text-xs mb-2 text-center">सोशल मीडिया पर Follow करें</div>
           <div className="flex gap-2 justify-center">
             {[
-              { label: "46K+ Insta", color: "#e1306c", href: "https://www.instagram.com/ANNADATA_AGRI_AND_SEEDS", emoji: "📸" },
+              { label: "46K+ Insta", color: "#e1306c", href: "https://www.instagram.com/lifeofkeshavmeena?igsh=MXc0emJjanFrbzluOQ%3D%3D", emoji: "📸" },
               { label: "31K+ FB", color: "#1877f2", href: "https://www.facebook.com/share/1NNq1tBFvf/", emoji: "👍" },
               { label: "8K+ YT", color: "#ff0000", href: "https://youtube.com", emoji: "▶️" },
             ].map((s) => (
@@ -829,7 +829,7 @@ function ContactTab() {
           <div className="text-white font-bold text-sm mb-3">📱 Social Media</div>
           <div className="space-y-2">
             {[
-              { label: "Instagram", handle: "@ANNADATA_AGRI_AND_SEEDS", followers: "46K+ followers", emoji: "📸", color: "#e1306c", href: "https://www.instagram.com/ANNADATA_AGRI_AND_SEEDS" },
+              { label: "Instagram", handle: "@ANNADATA_AGRI_AND_SEEDS", followers: "46K+ followers", emoji: "📸", color: "#e1306c", href: "https://www.instagram.com/lifeofkeshavmeena?igsh=MXc0emJjanFrbzluOQ%3D%3D" },
               { label: "Facebook", handle: "Annadata Agri & Seeds", followers: "31K+ followers", emoji: "👍", color: "#1877f2", href: "https://www.facebook.com/share/1NNq1tBFvf/" },
               { label: "YouTube", handle: "Annadata Channel", followers: "8K+ subscribers", emoji: "▶️", color: "#ff0000", href: "https://youtube.com" },
             ].map(s => (
