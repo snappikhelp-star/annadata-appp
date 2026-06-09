@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download, Share2, Plus, LayoutGrid, ChevronRight } from "lucide-react";
 import { usePWAInstall } from "@/hooks/usePWAInstall";
-import logoPath from "@assets/1a8da157-dd3c-4aca-a944-a5f28e3399b3_1781030729801.png";
 
 const STORAGE_KEY = "annadata_install_nudge_dismissed";
 
