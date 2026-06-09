@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { Star, ArrowLeft, MessageCircle, Copy } from "lucide-react";
 import { FaWhatsapp, FaGoogle } from "react-icons/fa";
 
-import logoPath from "@assets/f0d776c4-6a98-4584-9d3a-7186ca49bf22_1781029871797.png";
 import {
   generateCustomerReview,
   LOCAL_BUSINESS_SCHEMA,
@@ -95,7 +94,7 @@ export default function ReviewsPage() {
             <span className="hidden sm:inline font-hindi">← वापस जाएं</span>
           </Link>
           <div className="flex items-center gap-3">
-            <img src={logoPath} alt="Logo" className="w-10 h-10 rounded-full border-2 border-secondary/60 bg-white object-contain" />
+            <div className="text-4xl">🌾</div> alt="Logo" className="w-10 h-10 rounded-full border-2 border-secondary/60 bg-white object-contain" />
             <div>
               <p className="font-serif font-bold text-white text-sm leading-tight">ANNADATA AGRI</p>
               <p className="text-secondary text-xs font-hindi">Google Review</p>
