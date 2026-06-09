@@ -25,7 +25,6 @@ import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/home";
 import ReviewsPage from "@/pages/reviews";
 import SupabaseTest from "@/pages/SupabaseTest";
-import MobileApp from "@/pages/MobileApp";
 
 const queryClient = new QueryClient();
 
@@ -62,7 +61,6 @@ function Router() {
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/reviews" component={ReviewsPage} />
-      <Route path="/app" component={MobileApp} />
       <Route path="/supabase-test" component={SupabaseTest} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin" component={AdminRoutes} />

@@ -8,7 +8,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import { FaWhatsapp, FaGoogle, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
-import logoPath from "@assets/163488e5-17d0-4da4-b57e-f1336b17431e_1780987508727.png";
+import logoPath from "@assets/1a8da157-dd3c-4aca-a944-a5f28e3399b3_1781030729801.png";
 import bannerPath from "@assets/gfjhj_1780987573210.jpg";
 import shopImg1 from "@assets/WhatsApp_Image_2026-06-04_at_1.14.14_PM_(1)_1780559137512.jpeg";
 import shopImg2 from "@assets/WhatsApp_Image_2026-06-04_at_1.14.14_PM_1780559137513.jpeg";
@@ -243,40 +243,102 @@ function HomeTab({ onTabChange }: { onTabChange: (t: Tab) => void }) {
       <div className="px-4 pb-24 space-y-5 pt-4 relative z-10">
 
         {/* ── HERO BANNER ── */}
-        <motion.a
-          href={waLink("नमस्ते Keshav Bhai! मुझे जानकारी चाहिए।")}
-          target="_blank" rel="noreferrer"
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="block relative rounded-3xl overflow-hidden shadow-2xl"
-          style={{ border: "1.5px solid rgba(249,168,37,0.4)" }}>
-          <img
-            src={bannerPath}
-            alt="Annadata Agri & Seeds"
-            className="w-full object-cover"
-            style={{ maxHeight: 200, objectPosition: "center top" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
-            <div className="text-[#F9A825] text-[10px] font-black uppercase tracking-widest mb-0.5">Annadata Agri & Seeds</div>
-            <div className="text-white font-black text-base leading-tight">आपका विश्वास — हमारी पहचान 🙏</div>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="inline-flex items-center gap-1 bg-[#25D366] text-white text-[10px] font-black px-2.5 py-1 rounded-full">
-                <FaWhatsapp className="w-3 h-3" /> WhatsApp करें
-              </span>
-              <span className="text-white/60 text-[9px]">तुरंत जवाब मिलेगा</span>
+          className="rounded-2xl overflow-hidden bg-white shadow-lg relative"
+          style={{ border: "1.5px solid rgba(22,101,52,0.15)" }}
+        >
+          {/* Top accent bar */}
+          <div className="h-1 w-full" style={{ background: "linear-gradient(90deg, #15803d 0%, #F9A825 50%, #15803d 100%)" }} />
+
+          <div className="flex items-stretch gap-0">
+            {/* Left text area */}
+            <div className="flex-1 px-4 py-4 flex flex-col justify-between gap-3">
+              {/* Live badge */}
+              <div className="flex items-center gap-1.5">
+                <motion.span
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 1.1, repeat: Infinity }}
+                  className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0"
+                />
+                <span className="text-red-500 text-[9px] font-black uppercase tracking-widest">खरीफ 2026 LIVE</span>
+              </div>
+
+              {/* Hindi heading */}
+              <div>
+                <div className="text-gray-800 font-black text-[15px] leading-tight font-hindi">
+                  किसानों के लिए<br />
+                  <span className="text-green-700">भरोसेमंद बीज</span>
+                </div>
+                <div className="text-gray-500 text-[10px] font-hindi mt-1 leading-snug">
+                  धान • गेहूं • सोयाबीन • फसल दवाई
+                </div>
+              </div>
+
+              {/* Owner quote */}
+              <div className="bg-green-50 rounded-xl px-2.5 py-2 flex items-start gap-2 border border-green-100">
+                <img src={shopImg1} alt="Shop" className="w-6 h-6 rounded-full object-cover flex-shrink-0 border border-green-300" />
+                <span className="text-green-800 text-[9px] font-hindi leading-tight">
+                  "सही सलाह देना हमारी प्राथमिकता है।"
+                </span>
+              </div>
+
+              {/* CTA buttons */}
+              <div className="flex flex-col gap-1.5">
+                <a href={`tel:${PHONE_SHORT}`}
+                  className="flex items-center justify-center gap-1.5 py-2.5 rounded-xl font-hindi font-black text-[11px] text-white"
+                  style={{ background: "#15803d", boxShadow: "0 3px 12px rgba(21,128,61,0.35)" }}>
+                  <Phone className="w-3.5 h-3.5" /> Call Now — {PHONE_SHORT}
+                </a>
+                <div className="grid grid-cols-2 gap-1.5">
+                  <a href={waLink("नमस्ते Keshav Bhai! मुझे बीज/दवाई की जानकारी चाहिए।")}
+                    target="_blank" rel="noreferrer"
+                    className="flex items-center justify-center gap-1 py-2 rounded-xl font-hindi font-black text-[10px] text-white"
+                    style={{ background: "#25D366", boxShadow: "0 3px 10px rgba(37,211,102,0.35)" }}>
+                    <FaWhatsapp className="w-3 h-3" /> WhatsApp
+                  </a>
+                  <a href={MAPS_LINK} target="_blank" rel="noreferrer"
+                    className="flex items-center justify-center gap-1 py-2 rounded-xl font-hindi font-black text-[10px] text-yellow-700 border-2 border-yellow-400 bg-yellow-50">
+                    <MapPin className="w-3 h-3" /> Google Map
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right image */}
+            <div className="w-[115px] flex-shrink-0 relative">
+              <img
+                src={shopImg2}
+                alt="Annadata Agri Shop"
+                className="w-full h-full object-cover"
+                style={{ minHeight: 230 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent pointer-events-none" />
+              {/* Season tag */}
+              <motion.div
+                animate={{ scale: [1, 1.08, 1] }}
+                transition={{ duration: 1.8, repeat: Infinity }}
+                className="absolute top-2 right-2 bg-[#F9A825] text-black text-[8px] font-black px-2 py-0.5 rounded-full shadow">
+                🔥 HOT
+              </motion.div>
+              {/* Trust badges stacked */}
+              <div className="absolute bottom-2 left-1 right-1 flex flex-col gap-1">
+                {["🌾 बीज", "🧴 दवाई", "⭐ 4.9"].map((t, i) => (
+                  <motion.span
+                    key={t}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.1 }}
+                    className="bg-black/60 text-white text-[8px] font-black px-1.5 py-0.5 rounded-md font-hindi text-center backdrop-blur-sm">
+                    {t}
+                  </motion.span>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="absolute top-3 right-3">
-            <motion.span
-              animate={{ scale: [1, 1.15, 1], rotate: [-3, 3, -3] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="bg-[#F9A825] text-black text-[9px] font-black px-2.5 py-1 rounded-full shadow-lg">
-              🔥 HOT SEASON
-            </motion.span>
-          </div>
-        </motion.a>
+        </motion.div>
 
         {/* ── LIVE STOCK ALERT ── */}
         <motion.div
@@ -1253,8 +1315,8 @@ function ContactTab() {
             <Clock className="w-4 h-4 text-[#F9A825] flex-shrink-0" />
             <div>
               <div className="text-white text-sm font-bold">दुकान समय</div>
-              <div className="text-white/60 text-xs">सोम–शनि: सुबह 8 बजे – शाम 8 बजे</div>
-              <div className="text-white/40 text-[10px]">रविवार: सुबह 10 बजे – दोपहर 2 बजे</div>
+              <div className="text-white/60 text-xs">सोम–रवि: सुबह 8 बजे – शाम 8 बजे</div>
+              <div className="text-white/40 text-[10px]">सातों दिन खुला रहता है</div>
             </div>
           </div>
           <div className="flex items-center gap-3">

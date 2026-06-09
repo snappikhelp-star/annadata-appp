@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp, FaInstagram, FaYoutube, FaFacebook, FaGoogle } from "react-icons/fa";
 
-import logoPath from "@assets/ChatGPT_Image_May_22,_2026,_10_59_37_PM_1779470996795.png";
+import logoPath from "@assets/1a8da157-dd3c-4aca-a944-a5f28e3399b3_1781030729801.png";
 import ownerPhotoPath from "@assets/2d15bd6ce2f040b69e7c52160dd6bba7FR_1779471098722.jpg";
 import heroImagePath from "@assets/gfjhj_1780654864294.jpg";
 import bannerWidePath from "@assets/a5fd3043-fdbf-4d76-adf5-6f0016548e78_1779476882694.png";
@@ -258,110 +258,279 @@ function TickerStrip() {
 
 /* ─── Hero ─── */
 function HeroSection() {
-  const slides = [
-    { badge: "🌾 मुख्य उत्पाद — धान", title: "धान के प्रीमियम\nहाइब्रिड बीज", subtitle: "1886 • PB1 • उच्च उत्पादन • किसान की पसंद", color: "#22c55e" },
-    { badge: "🌿 रबी सीजन — गेहूं", title: "गेहूं के बेस्ट\nसर्टिफाइड बीज", subtitle: "अधिक पैदावार • जल्दी अंकुरण • टॉप ब्रांड उपलब्ध", color: "#f9a825" },
-    { badge: "🌱 खरीफ — सोयाबीन", title: "सोयाबीन • चना\nकीटनाशक दवाइयां", subtitle: "असली ब्रांड • सही दाम • विशेषज्ञ सलाह मुफ्त", color: "#26a69a" },
+  const trustBadges = [
+    { icon: <Sprout className="w-4 h-4" />, label: "बीज" },
+    { icon: <FlaskConical className="w-4 h-4" />, label: "फसल दवाई" },
+    { icon: <Users className="w-4 h-4" />, label: "किसान सहायता" },
+    { icon: <FaGoogle className="w-4 h-4" />, label: "Google Reviews" },
   ];
-  const [current, setCurrent] = useState(0);
-  const heroTouchStartX = useRef<number>(0);
-  useEffect(() => {
-    const t = setInterval(() => setCurrent(c => (c + 1) % slides.length), 4500);
-    return () => clearInterval(t);
-  }, []);
-  const slide = slides[current];
-  const handleHeroTouchStart = (e: React.TouchEvent) => { heroTouchStartX.current = e.touches[0].clientX; };
-  const handleHeroTouchEnd = (e: React.TouchEvent) => {
-    const diff = heroTouchStartX.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 45) {
-      if (diff > 0) setCurrent(c => (c + 1) % slides.length);
-      else setCurrent(c => (c - 1 + slides.length) % slides.length);
-    }
+
+  const floatVariants = {
+    idle: (i: number) => ({
+      y: [0, -8, 0],
+      transition: { duration: 2.8 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 },
+    }),
   };
 
   return (
-    <section className="w-full pt-[118px]">
-      <motion.div initial={{ opacity: 0, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="w-full relative">
-        <img src={heroImagePath} alt="Annadata Agri & Seeds — Keshav Meena" className="w-full h-auto block" style={{ filter: "drop-shadow(0 0 0 transparent)" }} />
-      </motion.div>
+    <section className="w-full pt-[118px] bg-white relative overflow-hidden">
+      {/* Subtle grain texture overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23166534' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
+      />
 
-      <div className="w-full bg-foreground relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,168,37,0.08)_0%,transparent_70%)]" />
-        <div className="relative z-10" onTouchStart={handleHeroTouchStart} onTouchEnd={handleHeroTouchEnd}>
-          <motion.div key={current} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col md:flex-row items-center gap-0">
-            <div className="hidden md:block w-1.5 self-stretch rounded-r-full flex-shrink-0" style={{ background: slide.color }} />
-            <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-8 px-6 md:px-12 py-6 md:py-8">
-              <div className="flex-1 flex flex-col gap-2 text-center md:text-left">
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-white text-xs md:text-sm font-bold font-hindi self-center md:self-start"
-                  style={{ background: `${slide.color}28`, border: `1.5px solid ${slide.color}60` }}>{slide.badge}</span>
-                <h2 className="font-hindi font-black text-3xl md:text-4xl lg:text-5xl text-white leading-tight whitespace-pre-line">{slide.title}</h2>
-                <p className="font-hindi text-white/70 text-sm md:text-base">{slide.subtitle}</p>
+      {/* Main hero content */}
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 py-10 md:py-16">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+
+          {/* ── LEFT CONTENT ── */}
+          <div className="flex-1 flex flex-col gap-5 text-center lg:text-left order-2 lg:order-1">
+
+            {/* Live season badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center justify-center lg:justify-start gap-2"
+            >
+              <motion.span
+                animate={{ scale: [1, 1.25, 1] }}
+                transition={{ duration: 1.2, repeat: Infinity }}
+                className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0"
+              />
+              <span className="text-xs font-black uppercase tracking-widest text-red-500 font-hindi">
+                खरीफ 2026 — स्टॉक उपलब्ध है
+              </span>
+            </motion.div>
+
+            {/* Main heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              className="font-hindi font-black text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.2rem] leading-[1.25] text-gray-900"
+            >
+              किसानों के लिए{" "}
+              <span className="relative inline-block text-green-700">
+                भरोसेमंद
+                <motion.span
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+                  className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-yellow-400 origin-left"
+                />
+              </span>{" "}
+              बीज और फसल दवाई
+            </motion.h1>
+
+            {/* Subheading */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="font-hindi text-gray-600 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0"
+            >
+              Annadata Agri and Seeds में धान, गेहूं, सोयाबीन और अन्य फसलों के लिए सही सलाह और सही प्रोडक्ट मिलते हैं।
+            </motion.p>
+
+            {/* Owner message card */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="inline-flex items-start gap-3 bg-green-50 border border-green-200 rounded-2xl px-4 py-3 max-w-md mx-auto lg:mx-0"
+            >
+              <img
+                src={ownerPhotoPath}
+                alt="Keshav Meena"
+                className="w-10 h-10 rounded-full object-cover border-2 border-green-400 flex-shrink-0"
+              />
+              <div className="flex flex-col">
+                <span className="font-hindi text-green-800 font-bold text-sm leading-snug">
+                  "किसान भाइयों को सही सलाह देना हमारी प्राथमिकता है।"
+                </span>
+                <span className="text-green-600 text-xs font-semibold mt-0.5">— केशव मीणा, Annadata Agri</span>
               </div>
-              <div className="flex flex-col gap-3 items-center md:items-end flex-shrink-0">
-                <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-base text-white transition-all hover:scale-105 shadow-lg"
-                  style={{ background: slide.color, boxShadow: `0 6px 20px ${slide.color}55` }}>
-                  <Phone className="w-5 h-5" /> अभी कॉल करें
-                </a>
-                <a href={waLink("नमस्ते Keshav Bhai! मुझे बीज/दवाई की जानकारी चाहिए।")} target="_blank" rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-base text-white transition-all hover:scale-105"
-                  style={{ background: "#25D366", boxShadow: "0 6px 20px rgba(37,211,102,0.4)" }}>
-                  <FaWhatsapp className="w-5 h-5" /> WhatsApp करें
-                </a>
-              </div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+            >
+              <motion.a
+                href={`tel:${PHONE_SHORT}`}
+                data-testid="button-call-now"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                className="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-hindi font-black text-base bg-green-700 hover:bg-green-800 text-white shadow-lg transition-colors"
+                style={{ boxShadow: "0 6px 20px rgba(21,128,61,0.35)" }}
+              >
+                <Phone className="w-5 h-5" /> Call Now
+              </motion.a>
+              <motion.a
+                href={waLink("नमस्ते Keshav Bhai! मुझे बीज/दवाई की जानकारी चाहिए।")}
+                target="_blank" rel="noreferrer"
+                data-testid="button-whatsapp-hero"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                className="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-hindi font-black text-base bg-[#25D366] hover:bg-[#1ebe5d] text-white shadow-lg transition-colors"
+                style={{ boxShadow: "0 6px 20px rgba(37,211,102,0.35)" }}
+              >
+                <FaWhatsapp className="w-5 h-5" /> WhatsApp करें
+              </motion.a>
+              <motion.a
+                href={MAPS_LINK}
+                target="_blank" rel="noreferrer"
+                data-testid="button-directions"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                className="flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-hindi font-black text-base border-2 border-yellow-400 text-yellow-700 hover:bg-yellow-50 transition-colors"
+              >
+                <MapPin className="w-5 h-5" /> Google Map देखें
+              </motion.a>
+            </motion.div>
+
+            {/* Trust badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="flex flex-wrap gap-2 justify-center lg:justify-start"
+            >
+              {trustBadges.map((b, i) => (
+                <motion.div
+                  key={b.label}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
+                  className="flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-bold text-gray-700 shadow-sm"
+                >
+                  <span className="text-green-600">{b.icon}</span>
+                  <span className="font-hindi">{b.label}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* ── RIGHT IMAGE CARD ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex-shrink-0 w-full max-w-sm lg:max-w-[420px] order-1 lg:order-2"
+          >
+            <div className="relative">
+              {/* Decorative background dots */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 rounded-full bg-green-100 opacity-60 pointer-events-none" />
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 rounded-full bg-yellow-100 opacity-70 pointer-events-none" />
+
+              {/* Main shop image */}
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-100"
+              >
+                <img
+                  src={shopImg1}
+                  alt="Annadata Agri and Seeds — Shop"
+                  className="w-full object-cover"
+                  style={{ height: "320px", objectPosition: "center" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/60 via-transparent to-transparent" />
+
+                {/* Shop name overlay */}
+                <div className="absolute bottom-0 left-0 right-0 px-4 py-4">
+                  <div className="font-black text-white text-sm tracking-wide uppercase">Annadata Agri & Seeds</div>
+                  <div className="font-hindi text-white/80 text-xs mt-0.5">रायसेन रोड, सलामतपुर, जि. रायसेन</div>
+                </div>
+
+                {/* Google rating badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.9, type: "spring", stiffness: 300 }}
+                  className="absolute top-3 right-3 bg-white rounded-xl px-3 py-2 shadow-lg flex items-center gap-1.5"
+                >
+                  <FaGoogle className="w-3.5 h-3.5 text-[#EA4335]" />
+                  <div className="flex flex-col leading-none">
+                    <div className="flex items-center gap-0.5">
+                      <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      <span className="text-xs font-black text-gray-800">4.9</span>
+                    </div>
+                    <span className="text-[9px] text-gray-500 font-bold">200+ Reviews</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Floating owner card */}
+              <motion.div
+                custom={1}
+                variants={floatVariants}
+                animate="idle"
+                className="absolute -bottom-6 -left-5 bg-white rounded-2xl shadow-xl px-3 py-2.5 flex items-center gap-2.5 border border-gray-100"
+                style={{ minWidth: 170 }}
+              >
+                <img src={ownerPhotoPath} alt="Keshav Meena" className="w-10 h-10 rounded-full object-cover border-2 border-green-400 flex-shrink-0" />
+                <div>
+                  <div className="font-black text-gray-800 text-xs">Keshav Meena</div>
+                  <div className="font-hindi text-gray-500 text-[10px] leading-tight">किसान सलाहकार</div>
+                  <div className="flex mt-0.5 gap-0.5">
+                    {[1,2,3,4,5].map(s => <Star key={s} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />)}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating crop tag */}
+              <motion.div
+                custom={2}
+                variants={floatVariants}
+                animate="idle"
+                className="absolute -top-4 left-4 bg-green-700 text-white rounded-full px-3 py-1.5 text-xs font-black shadow-lg flex items-center gap-1.5"
+              >
+                <Sprout className="w-3.5 h-3.5" />
+                <span className="font-hindi">धान • गेहूं • सोयाबीन</span>
+              </motion.div>
             </div>
           </motion.div>
-          <div className="flex justify-center gap-2 pb-5">
-            {slides.map((s, i) => (
-              <button key={i} onClick={() => setCurrent(i)} className="h-2 rounded-full transition-all duration-300"
-                style={{ width: i === current ? "28px" : "8px", background: i === current ? slide.color : "rgba(255,255,255,0.3)" }} />
-            ))}
-          </div>
         </div>
       </div>
 
-      <div className="w-full bg-foreground relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(249,168,37,0.10)_0%,transparent_70%)]" />
-        <div className="container mx-auto px-4 py-6 md:py-8 flex flex-col items-center text-center relative z-10">
-          <motion.h2 initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-hindi font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-transparent bg-clip-text"
-            style={{ backgroundImage: "linear-gradient(135deg, #F9A825 0%, #FFD54F 40%, #F57F17 70%, #F9A825 100%)", WebkitBackgroundClip: "text" }}>
-            जय जवान जय किसान
-          </motion.h2>
-          <p className="text-white/60 text-sm md:text-base font-hindi mt-1">किसान की मुस्कान — हमारी पहचान</p>
-        </div>
-      </div>
-
-      <div className="bg-primary w-full">
-        <div className="container mx-auto px-4 md:px-6 py-8 flex flex-col items-center gap-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="flex flex-wrap justify-center gap-3">
-            {[
-              { icon: <Users className="w-4 h-4" />, label: "200+ Farmers Trusted" },
-              { icon: <Heart className="w-4 h-4" />, label: "44K+ Instagram" },
-              { icon: <FaFacebook className="w-4 h-4" />, label: "31K+ Facebook" },
-            ].map((b, i) => (
-              <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full glass-dark border border-secondary/30 text-white text-sm font-medium">
-                <span className="text-secondary">{b.icon}</span>{b.label}
+      {/* Bottom strip — stats */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.7 }}
+        className="border-t border-gray-100 bg-green-50 mt-8"
+      >
+        <div className="container mx-auto px-4 md:px-8 py-4 flex flex-wrap items-center justify-center md:justify-between gap-4">
+          {[
+            { icon: <Users className="w-4 h-4 text-green-700" />, val: "200+", label: "Farmers Trusted" },
+            { icon: <ShieldCheck className="w-4 h-4 text-green-700" />, val: "100%", label: "असली माल" },
+            { icon: <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />, val: "4.9★", label: "Google Rating" },
+            { icon: <Clock className="w-4 h-4 text-green-700" />, val: "1 वर्ष", label: "अनुभव (Since July 2025)" },
+            { icon: <Leaf className="w-4 h-4 text-green-700" />, val: "50+", label: "Seed Varieties" },
+          ].map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 + i * 0.07 }}
+              className="flex items-center gap-2"
+            >
+              <div className="w-8 h-8 rounded-full bg-white border border-green-200 flex items-center justify-center flex-shrink-0 shadow-sm">
+                {s.icon}
               </div>
-            ))}
-          </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }} className="flex flex-col sm:flex-row gap-3 w-full max-w-lg">
-            <a href={`tel:${PHONE_SHORT}`} data-testid="button-call-now"
-              className="flex-1 py-4 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold rounded-2xl flex items-center justify-center gap-2 text-lg transition-all hover:-translate-y-1 shadow-xl"
-              style={{ boxShadow: "0 8px 24px rgba(249,168,37,0.45)" }}>
-              <Phone className="w-5 h-5" /> Call Now
-            </a>
-            <a href={waLink("नमस्ते Keshav Bhai! मुझे जानकारी चाहिए।")} target="_blank" rel="noreferrer" data-testid="button-whatsapp-hero"
-              className="flex-1 py-4 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold rounded-2xl flex items-center justify-center gap-2 text-lg transition-all hover:-translate-y-1 shadow-xl"
-              style={{ boxShadow: "0 8px 24px rgba(37,211,102,0.45)" }}>
-              <FaWhatsapp className="w-6 h-6" /> WhatsApp
-            </a>
-            <a href={MAPS_LINK} target="_blank" rel="noreferrer" data-testid="button-directions"
-              className="flex-1 py-4 glass text-white font-bold rounded-2xl flex items-center justify-center gap-2 text-lg transition-all hover:-translate-y-1 border border-white/20">
-              <MapPin className="w-5 h-5 text-secondary" /> Directions
-            </a>
-          </motion.div>
+              <div>
+                <div className="font-black text-gray-800 text-sm leading-none">{s.val}</div>
+                <div className="font-hindi text-gray-500 text-[10px] leading-tight mt-0.5">{s.label}</div>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -1535,10 +1704,10 @@ function ShopGallerySection() {
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
           className="text-center mt-8">
-          <a href="https://www.instagram.com/ANNADATA_AGRI_AND_SEEDS" target="_blank" rel="noreferrer"
+          <a href="https://www.instagram.com/lifeofkeshavmeena?igsh=MXc0emJjanFrbzluOQ==" target="_blank" rel="noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white text-sm transition-all hover:scale-105 shadow-lg"
             style={{ background: "linear-gradient(135deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45)" }}>
-            <FaInstagram className="w-4 h-4" /> Instagram पर और Photos देखें — 44K+ Followers
+            <FaInstagram className="w-4 h-4" /> @lifeofkeshavmeena — 45K+ Followers
           </a>
         </motion.div>
       </div>
@@ -1622,7 +1791,7 @@ function OwnerSection() {
             <div className="flex flex-wrap gap-5 justify-center md:justify-start mb-7">
               {[
                 { val: "1 Year", label: "In Business" },
-                { val: "44K+", label: "Instagram" },
+                { val: "46K+", label: "Instagram" },
                 { val: "31K+", label: "Facebook" },
                 { val: "8K+", label: "YouTube" },
                 { val: "200+", label: "Farmers" },
@@ -1640,9 +1809,9 @@ function OwnerSection() {
                 className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-sm transition-all hover:scale-105 shadow-lg">
                 <FaWhatsapp className="w-4 h-4" /> WhatsApp पर पूछें
               </a>
-              <a href="https://www.instagram.com/ANNADATA_AGRI_AND_SEEDS" target="_blank" rel="noreferrer"
+              <a href="https://www.instagram.com/lifeofkeshavmeena?igsh=MXc0emJjanFrbzluOQ==" target="_blank" rel="noreferrer"
                 className="flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition-colors text-white text-sm font-semibold">
-                <FaInstagram className="w-4 h-4 text-pink-400" /> Instagram Follow करें
+                <FaInstagram className="w-4 h-4 text-pink-400" /> @lifeofkeshavmeena Follow करें
               </a>
               <a href={MAPS_LINK} target="_blank" rel="noreferrer"
                 className="flex items-center gap-2 px-5 py-3 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 transition-colors text-white text-sm font-semibold">
@@ -2109,13 +2278,9 @@ function Footer() {
           <p className="text-secondary text-xl font-hindi font-semibold mb-2">जय जवान जय किसान</p>
           <p className="text-white/50 text-sm mb-6">Raisen Road, Trimurti Chouraha, Salamatpur, Dist. Raisen</p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="https://www.instagram.com/ANNADATA_AGRI_AND_SEEDS" target="_blank" rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-secondary hover:text-foreground transition-all border border-white/10 text-sm font-medium text-white">
-              <FaInstagram className="w-4 h-4" />@ANNADATA_AGRI
-            </a>
             <a href="https://www.instagram.com/lifeofkeshavmeena?igsh=MXc0emJjanFrbzluOQ==" target="_blank" rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-secondary hover:text-foreground transition-all border border-white/10 text-sm font-medium text-white">
-              <FaInstagram className="w-4 h-4 text-pink-400" />@lifeofkeshavmeena
+              <FaInstagram className="w-4 h-4 text-pink-400" />@lifeofkeshavmeena 45K+
             </a>
             <a href={FACEBOOK_LINK} target="_blank" rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-[#1877F2] transition-all border border-white/10 text-sm font-medium text-white">
