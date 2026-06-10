@@ -28,7 +28,7 @@ function IOSStepsSheet({ onClose }: { onClose: () => void }) {
             <div className="text-gray-500 text-xs">Annadata Agri & Seeds</div>
           </div>
           <button onClick={onClose} className="ml-auto text-gray-400 p-1"><X className="w-5 h-5" /></button>
-        </div>
+        </motion.div>
         <p className="text-sm text-gray-600 font-hindi mb-4 leading-relaxed">
           iPhone पर App Install करने के लिए ये steps follow करें:
         </p>
